@@ -14,7 +14,8 @@ app.use(
     maxAge: 90 * 24 * 60 * 60,
     force: true,
   }),
-  helmet.dnsPrefetchControl()
+  helmet.dnsPrefetchControl(),
+  helmet.noCache(),
 );
 
 module.exports = app;
