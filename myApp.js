@@ -8,7 +8,8 @@ app.use(
     action: "deny",
   }),
   helmet.xssFilter(),
-  helmet.noSniff()
+  helmet.noSniff(),
+  helmet.ieNoOpen(),
 );
 
 module.exports = app;
