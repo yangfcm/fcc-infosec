@@ -10,6 +10,10 @@ app.use(
   helmet.xssFilter(),
   helmet.noSniff(),
   helmet.ieNoOpen(),
+  helmet.hsts({
+    maxAge: 90 * 24 * 60 * 60,
+    force: true,
+  })
 );
 
 module.exports = app;
