@@ -4,23 +4,17 @@ const helmet = require("helmet");
 app.use(helmet.hidePoweredBy());
 
 app.use(
-  helmet.frameguard({
-    action: "deny",
-  }),
-  helmet.xssFilter(),
-  helmet.noSniff(),
-  helmet.ieNoOpen(),
-  helmet.hsts({
-    maxAge: 90 * 24 * 60 * 60,
-    force: true,
-  }),
-  helmet.dnsPrefetchControl(),
-  helmet.noCache(),
-  helmet.contentSecurityPolicy({
-    directives: {
-      defaultSrc: ["'self'"],
-      scriptSrc: ["'self'", "trusted-cdn.com"],
+  helmet({
+    frameguard: {         // configure
+      action: 'deny'
     },
+    contentSecurityPolicy: {    // enable and configure
+      directives: {
+        defaultSrc: ["'self'"],
+        styleSrc: ['style.com'],
+      }
+    },
+    dnsPrefetchControl: false     // disable
   })
 );
 
