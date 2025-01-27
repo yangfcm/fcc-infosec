@@ -13,7 +13,8 @@ app.use(
   helmet.hsts({
     maxAge: 90 * 24 * 60 * 60,
     force: true,
-  })
+  }),
+  helmet.dnsPrefetchControl()
 );
 
 module.exports = app;
